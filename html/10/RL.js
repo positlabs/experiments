@@ -47,17 +47,20 @@ var RL = (function() {
 		return w;
 	}
 
-	rl.log = function(message) {
+	rl.log = function() {
+		var message = Array.prototype.slice.call(arguments).join(", ");
 		if(!initialized) init();
 		socket.emit("log", wrap(message));
 	}
 
-	rl.warn = function(message) {
+	rl.warn = function() {
+		var message = Array.prototype.slice.call(arguments).join(", ");
 		if(!initialized) init();
 		socket.emit("warn", wrap(message));
 	}
 
-	rl.error = function(message) {
+	rl.error = function() {
+		var message = Array.prototype.slice.call(arguments).join(", ");
 		if(!initialized) init();
 		socket.emit("error", wrap(message));
 	}
